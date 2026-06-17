@@ -4,7 +4,7 @@ import { Service } from "@/models/Service";
 import { PingLog } from "@/models/PingLog";
 import { sendDownAlertEmail } from "@/lib/email";
 
-const PING_TIMEOUT_MS = 15000; // 15 seconds — Render cold starts can be slow
+const PING_TIMEOUT_MS = 30000; // 30 seconds — Render cold starts can be slow
 
 interface PingResult {
   serviceId: string;
