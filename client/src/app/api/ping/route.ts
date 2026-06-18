@@ -135,6 +135,7 @@ export async function POST(req: NextRequest) {
     });
   } catch (error: any) {
     console.error("Error in ping route:", error.message);
+    console.error("Stack:", error.stack);
     return NextResponse.json({ message: "Internal server error" }, { status: 500 });
   }
 }
