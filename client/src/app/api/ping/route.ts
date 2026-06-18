@@ -3,6 +3,7 @@ import { connectDB } from "@/lib/db";
 import { Service } from "@/models/Service";
 import { PingLog } from "@/models/PingLog";
 import { sendDownAlertEmail } from "@/lib/email";
+import "@/models/User"; // Ensure User model is registered for population
 
 const PING_TIMEOUT_MS = 30000; // 30 seconds — Render cold starts can be slow
 

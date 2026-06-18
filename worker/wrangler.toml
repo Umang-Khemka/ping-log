@@ -1,0 +1,13 @@
+name = "render-ping-worker"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+
+# Cron trigger: runs every 9 minutes
+[triggers]
+crons = ["*/9 * * * *"]
+
+# Non-secret config vars go here.
+# Secrets (CRON_SECRET) should NOT go here — set them via:
+#   npx wrangler secret put CRON_SECRET
+[vars]
+PING_ENDPOINT_URL = "https://ping-95je9k4sk-umang-khemkas-projects.vercel.app/api/ping"
