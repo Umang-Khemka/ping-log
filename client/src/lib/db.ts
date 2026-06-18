@@ -1,8 +1,5 @@
 import mongoose from "mongoose";
 
-import "@/models/User";
-import "@/models/Service";
-import "@/models/PingLog";
 
 const MONGODB_URI = process.env.MONGODB_URI as string;
 
