@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
 
+import "@/models/User";
+import "@/models/Service";
+import "@/models/PingLog";
+
 const MONGODB_URI = process.env.MONGODB_URI as string;
 
 if (!MONGODB_URI) {
   throw new Error("Please define the MONGODB_URI environment variable in .env.local");
 }
-
-import "@/models/User";
-import "@/models/Service";
-import "@/models/PingLog";
 
 interface MongooseCache {
   conn: typeof mongoose | null;
