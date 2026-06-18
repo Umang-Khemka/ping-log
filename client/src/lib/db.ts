@@ -6,6 +6,10 @@ if (!MONGODB_URI) {
   throw new Error("Please define the MONGODB_URI environment variable in .env.local");
 }
 
+import "@/models/User";
+import "@/models/Service";
+import "@/models/PingLog";
+
 interface MongooseCache {
   conn: typeof mongoose | null;
   promise: Promise<typeof mongoose> | null;
@@ -40,11 +44,6 @@ export async function connectDB(): Promise<typeof mongoose> {
     cached.promise = null;
     throw error;
   }
-
-  // Force all models to register so .populate() works in serverless bundles
-  await import("@/models/User");
-  await import("@/models/Service");
-  await import("@/models/PingLog");
 
   return cached.conn;
 }
