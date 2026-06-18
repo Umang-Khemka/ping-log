@@ -10,4 +10,4 @@ crons = ["*/9 * * * *"]
 # Secrets (CRON_SECRET) should NOT go here — set them via:
 #   npx wrangler secret put CRON_SECRET
 [vars]
-PING_ENDPOINT_URL = "https://ping-95je9k4sk-umang-khemkas-projects.vercel.app/api/ping"
+PING_ENDPOINT_URL = "https://ping-log-beta.vercel.app/api/ping"
