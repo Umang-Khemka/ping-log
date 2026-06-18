@@ -6,10 +6,6 @@ if (!MONGODB_URI) {
   throw new Error("Please define the MONGODB_URI environment variable in .env.local");
 }
 
-/**
- * Global cache to prevent multiple connections in dev (Next.js hot reload
- * would otherwise create a new connection on every file save).
- */
 interface MongooseCache {
   conn: typeof mongoose | null;
   promise: Promise<typeof mongoose> | null;
@@ -44,6 +40,11 @@ export async function connectDB(): Promise<typeof mongoose> {
     cached.promise = null;
     throw error;
   }
+
+  // Force all models to register so .populate() works in serverless bundles
+  await import("@/models/User");
+  await import("@/models/Service");
+  await import("@/models/PingLog");
 
   return cached.conn;
 }
