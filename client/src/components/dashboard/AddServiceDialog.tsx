@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState } from "react";
 import { Plus, X } from "lucide-react";
 
 interface AddServiceDialogProps {
@@ -14,8 +14,7 @@ export function AddServiceDialog({ onAdd }: AddServiceDialogProps) {
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setError("");
     setIsSubmitting(true);
     const result = await onAdd(name, url);
@@ -31,15 +30,15 @@ export function AddServiceDialog({ onAdd }: AddServiceDialogProps) {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="flex items-center gap-2 h-9 px-4 rounded-md bg-[#3DDC84] hover:bg-[#34c474] text-[#0B0E14] text-sm font-medium transition-colors"
+        className="flex items-center justify-center gap-2 h-9 px-4 w-full sm:w-auto rounded-md bg-[#3DDC84] hover:bg-[#34c474] text-[#0B0E14] text-sm font-medium transition-colors"
       >
         <Plus className="w-4 h-4" />
         Add service
       </button>
 
       {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          <div className="w-full max-w-md mx-4 rounded-xl border border-white/[0.08] bg-[#0F1219] p-6 shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4">
+          <div className="w-full max-w-md rounded-xl border border-white/[0.08] bg-[#0F1219] p-6 shadow-2xl">
             <div className="flex items-center justify-between mb-5">
               <div>
                 <h2 className="text-base font-medium text-[#EDEFF4]">Add a service</h2>
@@ -50,7 +49,7 @@ export function AddServiceDialog({ onAdd }: AddServiceDialogProps) {
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-4">
               <div>
                 <label className={labelCls}>Name</label>
                 <input className={inputCls} placeholder="TKR Care Backend" value={name} onChange={e => setName(e.target.value)} required />
@@ -65,13 +64,13 @@ export function AddServiceDialog({ onAdd }: AddServiceDialogProps) {
               )}
 
               <button
-                type="submit"
+                onClick={handleSubmit}
                 disabled={isSubmitting}
                 className="w-full h-10 rounded-md bg-[#3DDC84] hover:bg-[#34c474] disabled:opacity-50 text-[#0B0E14] text-sm font-medium transition-colors mt-1"
               >
                 {isSubmitting ? "Adding..." : "Add service"}
               </button>
-            </form>
+            </div>
           </div>
         </div>
       )}
