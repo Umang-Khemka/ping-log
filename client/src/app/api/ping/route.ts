@@ -51,7 +51,7 @@ async function pingUrl(url: string): Promise<Omit<PingResult, "serviceId" | "nam
   }
 }
 
-// POST /api/ping — triggered by Cloudflare Worker cron every 9 minutes
+// POST /api/ping — triggered by Cloudflare Worker cron every 14 minutes
 export async function POST(req: NextRequest) {
   try {
     const secret = req.headers.get("x-cron-secret");

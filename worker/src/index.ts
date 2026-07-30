@@ -1,7 +1,7 @@
 /**
  * Render Ping — Cloudflare Worker
  *
- * Runs on a cron schedule (every 9 minutes) and calls our Next.js
+ * Runs on a cron schedule (every 14 minutes) and calls our Next.js
  * /api/ping endpoint, which pings all active services across all users.
  *
  * This Worker is intentionally "dumb" — it doesn't know about individual

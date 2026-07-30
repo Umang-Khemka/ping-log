@@ -104,7 +104,7 @@ export default function DashboardPage() {
                 <p className="text-sm text-[#8B93A7] mt-1 font-mono">
                   {services.length === 0
                     ? "Add a Render service to start keeping it awake."
-                    : `${services.length} service${services.length === 1 ? "" : "s"} · pinged every 9 min`}
+                    : `${services.length} service${services.length === 1 ? "" : "s"} · pinged every 14 min`}
                 </p>
               </div>
               {services.length > 0 && <AddServiceDialog onAdd={addService} />}

@@ -2,9 +2,9 @@ name = "render-ping-worker"
 main = "src/index.ts"
 compatibility_date = "2024-09-23"
 
-# Cron trigger: runs every 9 minutes
+# Cron trigger: runs every 14 minutes
 [triggers]
-crons = ["*/9 * * * *"]
+crons = ["*/14 * * * *"]
 
 # Non-secret config vars go here.
 # Secrets (CRON_SECRET) should NOT go here — set them via:
